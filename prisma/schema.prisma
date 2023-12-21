@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model BinhLuan {
+  binh_luan_id   Int        @id @default(autoincrement())
+  nguoi_dung_id  Int?
+  cong_viec_id   Int?
+  ngay_binh_luan DateTime?  @db.Date
+  noi_dung       String?    @db.VarChar(255)
+  sao_binh_luan  Int?
+  NguoiDung      NguoiDung? @relation(fields: [nguoi_dung_id], references: [nguoi_dung_id], onDelete: NoAction, onUpdate: NoAction, map: "BinhLuan_ibfk_1")
+  CongViec       CongViec?  @relation(fields: [cong_viec_id], references: [cong_viec_id], onDelete: NoAction, onUpdate: NoAction, map: "BinhLuan_ibfk_2")
+
+  @@index([cong_viec_id], map: "cong_viec_id")
+  @@index([nguoi_dung_id], map: "nguoi_dung_id")
+}
+
+model ChiTietLoaiCongViec {
+  chi_tiet_loai_cong_viec_id Int           @id @default(autoincrement())
+  ten_chi_tiet               String?       @db.VarChar(255)
+  hinh_anh                   String?       @db.VarChar(255)
+  loai_cong_viec_id          Int?
+  LoaiCongViec               LoaiCongViec? @relation(fields: [loai_cong_viec_id], references: [loai_cong_viec_id], onDelete: NoAction, onUpdate: NoAction, map: "ChiTietLoaiCongViec_ibfk_1")
+  CongViec                   CongViec[]
+
+  @@index([loai_cong_viec_id], map: "loai_cong_viec_id")
+}
+
+model CongViec {
+  cong_viec_id               Int                  @id @default(autoincrement())
+  ten_cong_viec              String?              @db.VarChar(600)
+  danh_gia                   Int?
+  gia_tien                   Int?
+  hinh_anh                   String?              @db.VarChar(255)
+  mo_ta                      String?              @db.VarChar(600)
+  mo_ta_ngan                 String?              @db.VarChar(600)
+  sao_cong_viec              Int?
+  chi_tiet_loai_cong_viec_id Int?
+  nguoi_dung_id              Int?
+  BinhLuan                   BinhLuan[]
+  NguoiDung                  NguoiDung?           @relation(fields: [nguoi_dung_id], references: [nguoi_dung_id], onDelete: NoAction, onUpdate: NoAction, map: "CongViec_ibfk_1")
+  ChiTietLoaiCongViec        ChiTietLoaiCongViec? @relation(fields: [chi_tiet_loai_cong_viec_id], references: [chi_tiet_loai_cong_viec_id], onDelete: NoAction, onUpdate: NoAction, map: "CongViec_ibfk_2")
+  ThueCongViec               ThueCongViec[]
+
+  @@index([chi_tiet_loai_cong_viec_id], map: "chi_tiet_loai_cong_viec_id")
+  @@index([nguoi_dung_id], map: "nguoi_dung_id")
+}
+
+model LoaiCongViec {
+  loai_cong_viec_id   Int                   @id @default(autoincrement())
+  ten_loai_chi_tiet   String?               @db.VarChar(255)
+  ChiTietLoaiCongViec ChiTietLoaiCongViec[]
+}
+
+model NguoiDung {
+  nguoi_dung_id Int            @id @default(autoincrement())
+  name          String?        @db.VarChar(255)
+  email         String?        @db.VarChar(255)
+  pass_word     String?        @db.VarChar(255)
+  phone         String?        @db.VarChar(255)
+  birth_day     String?        @db.VarChar(255)
+  gender        String?        @db.VarChar(255)
+  role          String?        @db.VarChar(255)
+  skill         String?        @db.VarChar(255)
+  certification String?        @db.VarChar(255)
+  avatar        String?        @db.VarChar(255)
+  BinhLuan      BinhLuan[]
+  CongViec      CongViec[]
+  ThueCongViec  ThueCongViec[]
+}
+
+model ThueCongViec {
+  thue_cong_viec_id Int        @id @default(autoincrement())
+  nguoi_dung_id     Int?
+  cong_viec_id      Int?
+  ngay_thue         DateTime?  @db.Date
+  hoan_thanh        Boolean?
+  NguoiDung         NguoiDung? @relation(fields: [nguoi_dung_id], references: [nguoi_dung_id], onDelete: NoAction, onUpdate: NoAction, map: "ThueCongViec_ibfk_1")
+  CongViec          CongViec?  @relation(fields: [cong_viec_id], references: [cong_viec_id], onDelete: NoAction, onUpdate: NoAction, map: "ThueCongViec_ibfk_2")
+
+  @@index([cong_viec_id], map: "cong_viec_id")
+  @@index([nguoi_dung_id], map: "nguoi_dung_id")
+}
