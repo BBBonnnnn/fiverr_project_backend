@@ -1,0 +1,11 @@
+binh_luan_id,nguoi_dung_id,cong_viec_id,ngay_binh_luan,noi_dung,sao_binh_luan
+1,1,1,2022-12-12,ahihi,5
+2,1,1,2023-03-03,ahuhu,4
+3,2,3,2023-12-18,hihihohohehehe,0
+4,2,2,2023-12-19,haha,1
+5,3,3,2023-12-20,hihi,2
+6,3,4,2023-12-21,hyhy,3
+7,4,9,2023-12-22,hoho,4
+8,4,10,2023-12-23,hehe,5
+9,5,11,2023-12-24,lala,5
+10,5,12,2023-12-25,lyly,3

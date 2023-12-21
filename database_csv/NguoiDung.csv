@@ -1,0 +1,7 @@
+nguoi_dung_id,name,email,pass_word,phone,birth_day,gender,role,skill,certification,avatar
+1,khang1,truonghoangkhang1@gmail.com,1234,123123123,11/11/2011,male,admin,,,C:\Users\Admin\Desktop\baitap_nop\Back-End\fiverr_project\fiverr-project\public\img\1702729692111_bigdata.jpg
+2,khang2,truonghoangkhang2@gmail.com,123123,321321312,05/05/2005,female,user,,,
+3,khang3,truonghoangkhang3@gmail.com,$2b$10$Hjs27fBESmeFc.aGdmeMcu3lKaQL5mLGdXUWLB80DKgKK00ow5oke,123123123,06/06/2006,string,user,string,string,
+4,khang4,truonghoangkhang4@gmail.com,$2b$10$mijlOkz3ngPM4XByEACFj.FA4OsNfmGAKgOQmJFxzD6fgZftpE0pG,123123123,01/01/2001,string,user,string,string,
+5,khang5,truonghoangkhang5@gmail.com,$2b$10$U1mqW2SJ4qHBo/fjcRzWb.fgHOUXD9deUQjD17t5eprbuXlrKwPca,123123123,08/08/2008,male,admin,,,
+13,khang6,truonghoangkhang6@gmail.com,$2b$10$tB5Xb3XF5NODOCA9yUX.MOkyxM3tx5Y1NwwPP51qHp1M9KChsN1.a,123123123,2005-01-01,male,user,string,string,
